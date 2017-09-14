@@ -30,6 +30,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <lombok.version>1.16.18</lombok.version>
+        <junit-platform-surefire-provider.version>1.0.0</junit-platform-surefire-provider.version>
+        <junit-vintage.version>4.12.0</junit-vintage.version>
     </properties>
 
     <dependencies>
@@ -56,6 +58,19 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-surefire-provider</artifactId>
+            <version>${junit-platform-surefire-provider.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-vintage.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Taken from JitPack -->
         <dependency>
             <groupId>com.github.sbrannen</groupId>
@@ -78,7 +93,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
+                <version>2.19.1</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*IntegrationTest.class</exclude>
@@ -87,11 +102,23 @@
                         <include>**/*Test.class</include>
                     </includes>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit-platform-surefire-provider.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                        <version>${junit-vintage.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.20</version>
+                <version>2.19.1</version>
                 <configuration>
                     <includes>
                         <include>**/*IntegrationTest.java</include>
@@ -105,6 +132,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                        <version>${junit-vintage.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
