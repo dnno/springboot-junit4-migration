@@ -32,6 +32,7 @@
         <lombok.version>1.16.18</lombok.version>
         <junit-platform-surefire-provider.version>1.0.0</junit-platform-surefire-provider.version>
         <junit-vintage.version>4.12.0</junit-vintage.version>
+        <junit-jupiter.version>5.0.0</junit-jupiter.version>
     </properties>
 
     <dependencies>
@@ -68,6 +69,13 @@
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
             <version>${junit-vintage.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -113,6 +121,11 @@
                         <artifactId>junit-vintage-engine</artifactId>
                         <version>${junit-vintage.version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>${junit-jupiter.version}</version>
+                    </dependency>
                 </dependencies>
             </plugin>
             <plugin>
@@ -137,6 +150,11 @@
                         <groupId>org.junit.vintage</groupId>
                         <artifactId>junit-vintage-engine</artifactId>
                         <version>${junit-vintage.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>${junit-jupiter.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
